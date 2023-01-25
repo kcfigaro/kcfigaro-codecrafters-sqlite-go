@@ -40,7 +40,7 @@ func main() {
 		}
 
 		var pageSize uint16
-		binary.Read(bytes.NewReader(header[16:18]), binary.BigEndian, &pageSize)
+		err = binary.Read(bytes.NewReader(header[16:18]), binary.BigEndian, &pageSize)
 		if err != nil {
 			fmt.Println("Failed to read integer:", err)
 			return
@@ -57,7 +57,7 @@ func main() {
 		}
 
 		var pageHeader PageHeader
-		binary.Read(bytes.NewReader(leafPages), binary.BigEndian, &pageHeader)
+		err = binary.Read(bytes.NewReader(leafPages), binary.BigEndian, &pageHeader)
 		if err != nil {
 			fmt.Println("Failed to read integer:", err)
 			return
